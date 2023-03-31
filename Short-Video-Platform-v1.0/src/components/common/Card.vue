@@ -1,12 +1,15 @@
 <template>
     <div class="card-box">
-        <el-card v-for="(item, index) in 12" class="card" :body-style="{ padding: '0px' }">
-            <img src="https://i.328888.xyz/2023/03/29/iWXR7H.png" class="image" />
-            <div style="padding: 14px">
-                <span>Yummy hamburger</span>
+        <el-card v-for="item in videoList" key="item.id" class="card" :body-style="{ padding: '0px' }">
+            <img :src="item.coverUrl" class="image" />
+            <div class="card-info" style="padding: 14px">
+                <span class="card-info-title">{{ item.title }}</span>
+                <div class="card-user">
+                    <img :src="item.userPic" alt="">
+                    <span>{{ item.userName }}</span>
+                </div>
                 <div class="bottom">
-                    <time class="time">{{ currentDate }}</time>
-                    <el-button text class="button">Operating</el-button>
+                    <time class="time">时长：{{ item.duration }}</time>
                 </div>
             </div>
         </el-card>
@@ -14,9 +17,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
+import { ref, onBeforeMount } from 'vue'
+import { getHaoKanVideo } from '../../utils/api/haokanVideo'
 const currentDate = ref(new Date())
+const videoList: any = ref([])
+onBeforeMount(async () => {
+    let res = await getHaoKanVideo()
+    videoList.value = res.data.result.list
+})
 </script>
 
 <style>
@@ -51,7 +59,41 @@ const currentDate = ref(new Date())
 
 .card {
     width: 20%;
-    height: 460px;
+    height: 340px;
     margin: 10px 20px;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 10px 10px 5px -4px #FF6347;
+    color: #FF6347;
+}
+
+.card-info {
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.card-info-title {
+    font-size: 16px;
+}
+
+.card-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.card-user {
+    display: flex;
+    align-items: center;
+}
+
+.card-user span {
+    margin-left: 5px;
+    font-size: 14px;
+    color: #FF6347;
 }
 </style>

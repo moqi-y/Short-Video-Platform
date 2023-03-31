@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Short from '@/views/Short.vue'
 import HaoKan from '@/views/HaoKan.vue'
 import Mini from '@/views/Mini.vue'
+import { createHash } from 'crypto'
 const routes: any = [
     {
         path: "/",
@@ -27,7 +28,7 @@ const routes: any = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes
 })
 
