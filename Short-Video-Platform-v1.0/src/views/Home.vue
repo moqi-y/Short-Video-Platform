@@ -19,7 +19,6 @@ import { getSlider } from '../utils/api/slider'
 let sliderList: any = ref([])
 onBeforeMount(async () => {
     let res = await getSlider()
-    console.log("请求数据测试：", res.data.result.list);
     sliderList.value = res.data.result.list
 })
 </script>
@@ -45,7 +44,7 @@ onBeforeMount(async () => {
     position: absolute;
     bottom: 0;
     left: 20px;
-    width: 1250px;
+    width: 1200px;
     height: 16px;
     background: #FF6347;
     border-radius: 0 10px 10px 0;

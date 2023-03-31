@@ -11,7 +11,7 @@ import Header from '@/components/common/Header.vue'
 
 <style scoped>
 .page {
-  width: 1300px;
+  width: 1200px;
   margin: 0 auto;
 }
 </style>
