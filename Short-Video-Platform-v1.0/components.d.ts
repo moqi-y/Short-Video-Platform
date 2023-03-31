@@ -9,8 +9,21 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Card: typeof import('./src/components/common/Card.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
+    ElCarousel: typeof import('element-plus/es')['ElCarousel']
+    ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
+    ElCol: typeof import('element-plus/es')['ElCol']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    Header: typeof import('./src/components/common/Header.vue')['default']
+    Hearder: typeof import('./src/components/common/Hearder.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
