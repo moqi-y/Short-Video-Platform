@@ -1,6 +1,6 @@
 <template>
     <div class="card-box">
-        <el-card v-for="item in videoList" key="item.id" class="card" :body-style="{ padding: '0px' }">
+        <el-card @click="onPlay(item)" v-for="item in videoList" key="item.id" class="card" :body-style="{ padding: '0px' }">
             <img :src="item.coverUrl" class="image" />
             <div class="card-info" style="padding: 14px">
                 <span class="card-info-title">{{ item.title }}</span>
@@ -17,14 +17,25 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount} from 'vue'
+import { useRouter } from 'vue-router';
 import { getHaoKanVideo } from '../../utils/api/haokanVideo'
-const currentDate = ref(new Date())
+let router = useRouter()
 const videoList: any = ref([])
 onBeforeMount(async () => {
     let res = await getHaoKanVideo()
+    console.log(res.data.result.list);
     videoList.value = res.data.result.list
 })
+const onPlay= (e:any)=>{
+    console.log("item",e);
+    router.push({
+        path: '/play', 
+        query:{
+            playUrl:e.playUrl
+        }
+    })
+}
 </script>
 
 <style>

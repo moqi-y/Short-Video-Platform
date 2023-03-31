@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import Short from '@/views/Short.vue'
 import HaoKan from '@/views/HaoKan.vue'
 import Mini from '@/views/Mini.vue'
+import Play from '@/views/Play.vue'
 import { createHash } from 'crypto'
 const routes: any = [
     {
@@ -24,6 +25,11 @@ const routes: any = [
         path: "/mini",
         name: 'Mini',
         component: Mini
+    },
+    {
+        path: "/play",
+        name: 'Play',
+        component: Play
     }
 ];
 
