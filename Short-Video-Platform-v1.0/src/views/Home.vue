@@ -10,16 +10,22 @@
         </div>
     </div>
 
-    <Card></Card>
+    <Card :videoList="videoList"></Card>
 </template>
 <script setup lang="ts">
 import Card from '@/components/common/Card.vue'
 import { onBeforeMount, ref } from 'vue';
+import { getHaoKanVideo } from '../utils/api/haokanVideo';
 import { getSlider } from '../utils/api/slider'
 let sliderList: any = ref([])
+const videoList: any = ref([])
 onBeforeMount(async () => {
     let res = await getSlider()
     sliderList.value = res.data.result.list
+
+    let resoult = await getHaoKanVideo()
+    console.log(resoult.data.result.list);
+    videoList.value = resoult.data.result.list
 })
 </script>
 <style scoped>

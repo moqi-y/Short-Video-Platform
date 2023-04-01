@@ -1,14 +1,14 @@
 <template>
     <div class="card-box">
         <el-card @click="onPlay(item)" v-for="item in videoList" key="item.id" class="card" :body-style="{ padding: '0px' }">
-            <img :src="item.coverUrl" class="image" />
+            <img :src="item.coverUrl?item.coverUrl:item.picurl" class="image" />
             <div class="card-info" style="padding: 14px">
                 <span class="card-info-title">{{ item.title }}</span>
                 <div class="card-user">
-                    <img :src="item.userPic" alt="">
+                    <img :src="item.userPic?item.userPic:item.picuser" alt="">
                     <span>{{ item.userName }}</span>
                 </div>
-                <div class="bottom">
+                <div class="bottom" v-if="item.duration">
                     <time class="time">时长：{{ item.duration }}</time>
                 </div>
             </div>
@@ -17,16 +17,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onBeforeMount} from 'vue'
+import { ref, onBeforeMount,defineProps} from 'vue'
 import { useRouter } from 'vue-router';
 import { getHaoKanVideo } from '../../utils/api/haokanVideo'
-let router = useRouter()
-const videoList: any = ref([])
-onBeforeMount(async () => {
-    let res = await getHaoKanVideo()
-    console.log(res.data.result.list);
-    videoList.value = res.data.result.list
+const props = defineProps({
+  videoList: String
 })
+let router = useRouter()
 const onPlay= (e:any)=>{
     console.log("item",e);
     router.push({
@@ -70,7 +67,7 @@ const onPlay= (e:any)=>{
 
 .card {
     width: 20%;
-    height: 340px;
+    /* height: 340px; */
     margin: 10px 20px;
     cursor: pointer;
 }
