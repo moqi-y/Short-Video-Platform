@@ -1,11 +1,12 @@
 <template>
     <div class="card-box">
-        <el-card @click="onPlay(item)" v-for="item in videoList" key="item.id" class="card" :body-style="{ padding: '0px' }">
-            <img :src="item.coverUrl?item.coverUrl:item.picurl" class="image" />
+        <el-card @click="onPlay(item)" v-for="item in videoList" key="item.id" class="card"
+            :body-style="{ padding: '0px' }">
+            <img :src="item.coverUrl ? item.coverUrl : item.picurl" class="image" />
             <div class="card-info" style="padding: 14px">
                 <span class="card-info-title">{{ item.title }}</span>
                 <div class="card-user">
-                    <img :src="item.userPic?item.userPic:item.picuser" alt="">
+                    <img :src="item.userPic ? item.userPic : item.picuser" alt="">
                     <span>{{ item.userName }}</span>
                 </div>
                 <div class="bottom" v-if="item.duration">
@@ -17,21 +18,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onBeforeMount,defineProps} from 'vue'
+import { ref, onBeforeMount, defineProps } from 'vue'
 import { useRouter } from 'vue-router';
 import { getHaoKanVideo } from '../../utils/api/haokanVideo'
 const props = defineProps({
-  videoList: String
+    videoList: String
 })
 let router = useRouter()
-const onPlay= (e:any)=>{
-    console.log("item",e);
-    router.push({
-        path: '/play', 
-        query:{
-            playUrl:e.playUrl
+const onPlay = (e: any) => {
+    let routeUrl = router.resolve({
+        path: '/play',
+        query: {
+            playUrl: e.playUrl
         }
     })
+    window.open(routeUrl.href, '_blank')
 }
 </script>
 
