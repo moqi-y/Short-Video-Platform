@@ -21,9 +21,11 @@
 import { ref, onBeforeMount, defineProps } from 'vue'
 import { useRouter } from 'vue-router';
 import { getHaoKanVideo } from '../../utils/api/haokanVideo'
+
 const props = defineProps({
-    videoList: String
+    videoList: Object
 })
+
 let router = useRouter()
 const onPlay = (e: any) => {
     let routeUrl = router.resolve({

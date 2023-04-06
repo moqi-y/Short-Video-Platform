@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Short from '@/views/Short.vue'
-import HaoKan from '@/views/HaoKan.vue'
-import Mini from '@/views/Mini.vue'
-import Play from '@/views/Play.vue'
+import Home from '../views/Home.vue'
+import Short from '../views/Short.vue'
+import HaoKan from '../views/HaoKan.vue'
+import Mini from '../views/Mini.vue'
+import Play from '../views/Play.vue'
 import { createHash } from 'crypto'
 const routes: any = [
     {
