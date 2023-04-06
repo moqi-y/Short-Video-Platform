@@ -9,33 +9,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRouter } from 'vue-router';
-let router = useRouter()
-let activeIndex = ref('/')
+import { ref } from 'vue'
+let activeIndex: any = ref(window.localStorage.getItem('path'))
 const handleSelect = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
+    window.localStorage.setItem('path', keyPath[0])
 }
-// //当前页面路由
-// let currentRoute = ref(router.currentRoute)
-// console.log("currentRoute", currentRoute);
 
-// //监听路由变化
-// watch(currentRoute, (path) => {
-//     console.log(path);
-//     if (path == "Home") {
-//         activeIndex.value = '/'
-//     }
-//     else if (path == "Short") {
-//         activeIndex.value = '/short'
-//     }
-//     else if (path == "Haokan") {
-//         activeIndex.value = '/haokan'
-//     }
-//     else if (path == "Haokan") {
-//         activeIndex.value = '/mini'
-//     }
-// }, {
-//     immediate: true //侦听器创建时立即监听
-// })
+
+
 </script>
