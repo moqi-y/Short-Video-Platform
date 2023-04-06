@@ -1,5 +1,4 @@
 <template>
-    六间房视频
     <Card :videoList="videoList"></Card>
 </template>
 <script setup lang="ts">

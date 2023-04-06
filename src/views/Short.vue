@@ -1,5 +1,4 @@
 <template>
-    快手短视频
     <Card :videoList="videoList"></Card>
 </template>
 <script setup lang="ts">

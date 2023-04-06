@@ -1,5 +1,4 @@
 <template>
-    好看视频
     <Card :videoList="videoList"></Card>
 </template>
 <script setup lang="ts">
