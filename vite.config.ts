@@ -20,15 +20,15 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
         },
     },
-    server: {
-        // host: 'https://my-json-server.typicode.com',
-        // port: 80,
-        proxy: {
-            '/api': {
-                target: 'https://api.apiopen.top',
-                changeOrigin: true,
-                // rewrite: (path) => path.replace(/^\/api/, ''), //注意
-            }
-        }
-    },
+    // server: {
+    //     // host: 'https://my-json-server.typicode.com',
+    //     // port: 80,
+    //     proxy: {
+    //         '/api': {
+    //             target: 'https://api.apiopen.top',
+    //             changeOrigin: true,
+    //             // rewrite: (path) => path.replace(/^\/api/, ''), //注意
+    //         }
+    //     }
+    // },
 })
